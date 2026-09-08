@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An interactive Cyclic Redundancy Check simulator for digital communication.">
+  <title>CRC Lab — Error Detection Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="glow glow-one"></div><div class="glow glow-two"></div>
+  <nav>
+    <a class="brand" href="#"><span class="brand-icon">C</span><span>CRC<span>LAB</span></span></a>
+    <div class="nav-links"><a href="#simulator">Simulator</a><a href="#how">How it works</a></div>
+    <span class="status"><i></i> System ready</span>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="eyebrow"><span>●</span> DIGITAL COMMUNICATION LAB</div>
+      <h1>Detect errors.<br><em>Bit by bit.</em></h1>
+      <p>Generate a CRC codeword, simulate transmission errors, and verify received data in one interactive workspace.</p>
+    </header>
+
+    <section class="workspace" id="simulator">
+      <div class="step-line"><span class="active">01 &nbsp; GENERATE</span><b></b><span>02 &nbsp; TRANSMIT</span><b></b><span>03 &nbsp; VERIFY</span></div>
+
+      <div class="input-grid">
+        <label><span>DATA BITS <small>Binary message</small></span><input id="data" value="1101011011" maxlength="24" autocomplete="off"></label>
+        <label><span>GENERATOR <small>Polynomial</small></span><div class="input-with-select"><input id="generator" value="10011" maxlength="12" autocomplete="off"><select id="preset" aria-label="Generator preset"><option value="10011">CRC-4</option><option value="1011">CRC-3</option><option value="1101">Custom</option></select></div></label>
+      </div>
+      <p class="error" id="error"></p>
+      <button class="primary" id="generateBtn">Generate CRC <span>→</span></button>
+
+      <div class="results hidden" id="results">
+        <div class="result-head"><div><small>GENERATED FRAME</small><h2>Sender output</h2></div><span class="tag">Ready to transmit</span></div>
+        <div class="metrics">
+          <article><small>Original data</small><strong id="original">—</strong></article>
+          <article><small>CRC remainder</small><strong class="accent" id="remainder">—</strong></article>
+          <article class="wide"><small>Transmitted codeword</small><strong id="codeword">—</strong></article>
+        </div>
+
+        <div class="transmission">
+          <div class="result-head"><div><small>TRANSMISSION CHANNEL</small><h2>Click any bit to flip it</h2></div><button class="ghost" id="randomBtn">Inject random error</button></div>
+          <div class="bits" id="bits"></div>
+          <div class="channel"><span>Sender</span><div><i></i><i></i><i></i><i></i><i></i></div><span>Receiver</span></div>
+          <div class="actions"><button class="secondary" id="resetBtn">Restore frame</button><button class="primary" id="checkBtn">Verify at receiver <span>→</span></button></div>
+        </div>
+
+        <div class="verdict" id="verdict"><div class="verdict-icon">✓</div><div><small>RECEIVER STATUS</small><h2 id="verdictTitle">No error detected</h2><p id="verdictText">The remainder is zero. Data integrity is verified.</p></div><strong id="receiverRemainder">0000</strong></div>
+      </div>
+    </section>
+
+    <section class="how" id="how">
+      <div><span>01</span><h3>Append zeros</h3><p>Add n−1 zeros, where n is the generator length.</p></div>
+      <div><span>02</span><h3>Modulo-2 divide</h3><p>Divide using XOR instead of normal subtraction.</p></div>
+      <div><span>03</span><h3>Attach remainder</h3><p>Replace the added zeros with the CRC remainder.</p></div>
+      <div><span>04</span><h3>Verify data</h3><p>A zero remainder means no error was detected.</p></div>
+    </section>
+  </main>
+  <footer><span>CRC LAB</span><p>Interactive error detection simulator</p><p>Built for Digital Communication</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>

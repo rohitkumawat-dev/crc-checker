@@ -5,3 +5,5 @@ The CRC mechanism works on a mathematical division principle called Modulo-2 div
 Below attached image of Live Protptype of Cyclic redundancy checker !
 <img width="1012" height="906" alt="Screenshot 2026-09-09 004713" src="https://github.com/user-attachments/assets/51a9ee82-5b7f-42cd-ba7e-9580965a7f37" />
 
+Author Rights 
+Rohit Kumawat 

@@ -43,14 +43,7 @@ The sender divides the message by an agreed generator polynomial and attaches th
 
 Dividing the codeword by `10011` at the receiver gives remainder `0000`, so the frame passes. Flip any bit and the remainder becomes non-zero.
 
-## Usage
 
-1. Enter the **data bits** (binary, up to 24 bits).
-2. Choose a **generator** from the presets or type your own polynomial in binary (up to 12 bits).
-3. Click **Generate CRC** to see the original data, remainder, and codeword.
-4. In the transmission channel, **click bits to flip them** or use **Inject random error**.
-5. Click **Verify at receiver** to see whether the error is detected.
-6. Use **Restore frame** to reset and try again.
 
 ## Getting started
 
